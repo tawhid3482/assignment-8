@@ -1,0 +1,25 @@
+{
+  "title": "DevOps Monitoring Dashboard",
+  "panels": [
+    {
+      "title": "CPU Usage",
+      "type": "timeseries"
+    },
+    {
+      "title": "Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "title": "Disk Usage",
+      "type": "timeseries"
+    },
+    {
+      "title": "Network Traffic",
+      "type": "timeseries"
+    },
+    {
+      "title": "Logs (Loki)",
+      "type": "logs"
+    }
+  ]
+}
