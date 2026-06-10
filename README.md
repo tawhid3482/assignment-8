@@ -7,6 +7,7 @@
 - Loki (Logging)
 - Promtail (Log shipping)
 - Node Exporter (System metrics)
+- Prometheus (Metrics collection)
 
 ---
 
@@ -17,36 +18,61 @@
 cd terraform
 terraform init
 terraform apply
+```
 
+### 2. CI/CD
+Push code to GitHub → automatic deployment triggers via GitHub Actions.
 
-2. CI/CD
-Push code to GitHub → automatic deployment triggers
-3. Install Monitoring Stack
-bash monitoring/install.shbash scripts/setup-node-exporter.sh
+### 3. Install Monitoring Stack
+```bash
+bash monitoring/install.sh
+bash scripts/setup-node-exporter.sh
+```
 
-📊 Access
+---
 
+## 📊 Access
 
-Grafana: http://<server-ip>:3000
+| Service    | URL                          |
+|------------|------------------------------|
+| Grafana    | `http://<server-ip>:3000`    |
+| Prometheus | `http://<server-ip>:9090`    |
 
+---
 
+## 📷 Screenshots
 
-📷 Screenshots Required
-dd
+### GitHub Actions — CI/CD Pipeline Success
+![GitHub Actions pipeline success](screenshot/cicd-successfull.png)
 
-Terraform apply success
+### Grafana — DevOps Monitoring Dashboard
+![Grafana dashboard with CPU metrics](screenshot/grafana-chart.png)
 
+### Prometheus — Query Interface
+![Prometheus query page](screenshot/prometheus-1.png)
 
-GitHub Actions pipeline success
+### Prometheus — Node Exporter Target Health
+![Prometheus node_exporter target UP](screenshot/node_export.png)
 
+### Loki — Log Query (Explore)
+![Grafana Explore with Loki data source](screenshot/loki-1.png)
 
-Grafana dashboard
+### Loki — Log Output
+![Loki logs in Grafana Explore](screenshot/loki-2.png)
 
+---
 
-Loki logs
+## 👨‍💻 Author
 
+DevOps Project by **Tawhidul Islam**
 
+---
 
-👨‍💻 Author
-DevOps Project by Tawhidul Islam
----# 📌 What You Will Submit on GitHub✔ Terraform code  ✔ CI/CD pipeline  ✔ Monitoring setup scripts  ✔ Grafana dashboard JSON  ✔ README documentation  ✔ Screenshots folder  ---# ⚡ If you want next level upgradeI can also help you:- 🔥 :contentReference[oaicite:0]{index=0}- 🔥 :contentReference[oaicite:1]{index=1}- 🔥 :contentReference[oaicite:2]{index=2}- 🔥 :contentReference[oaicite:3]{index=3}Just tell me 👍
+## 📌 What You Will Submit on GitHub
+
+- ✔ Terraform code
+- ✔ CI/CD pipeline
+- ✔ Monitoring setup scripts
+- ✔ Grafana dashboard JSON
+- ✔ README documentation
+- ✔ Screenshots folder
