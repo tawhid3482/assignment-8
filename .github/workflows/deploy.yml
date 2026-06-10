@@ -2,7 +2,7 @@ name: Deploy Monitoring Stack
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -12,18 +12,43 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup SSH
+      - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploy to Server
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
-            sudo apt update -y
-            cd /home/ubuntu/project
-            cd assignment-8
+          ssh ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+
+            set -e
+
+            PROJECT_DIR="/home/ubuntu/project/assignment-8"
+
+            echo "👉 Checking project directory..."
+
+            if [ ! -d "$PROJECT_DIR/.git" ]; then
+              echo "⚠ Repo not found, cloning..."
+              rm -rf /home/ubuntu/project
+              mkdir -p /home/ubuntu/project
+              git clone https://github.com/tawhid3482/assignment-8.git $PROJECT_DIR
+            fi
+
+            cd $PROJECT_DIR
+
+            echo "👉 Pulling latest code..."
             git pull origin main
-            bash monitoring/install.sh
+
+            echo "👉 Running install script..."
+            if [ -f monitoring/install.sh ]; then
+              bash monitoring/install.sh
+            else
+              echo "❌ install.sh not found"
+              exit 1
+            fi
+
+            echo "✅ Deployment successful!"
+
           EOF
