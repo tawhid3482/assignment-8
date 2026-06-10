@@ -32,7 +32,7 @@ Grafana: http://<server-ip>:3000
 
 
 📷 Screenshots Required
-
+dd
 
 Terraform apply success
 
