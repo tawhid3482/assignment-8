@@ -23,6 +23,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
             sudo apt update -y
             cd /home/ubuntu/project
+            cd assignment-8
             git pull origin main
             bash monitoring/install.sh
           EOF
