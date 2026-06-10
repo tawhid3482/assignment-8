@@ -67,12 +67,3 @@ bash scripts/setup-node-exporter.sh
 DevOps Project by **Tawhidul Islam**
 
 ---
-
-## 📌 What You Will Submit on GitHub
-
-- ✔ Terraform code
-- ✔ CI/CD pipeline
-- ✔ Monitoring setup scripts
-- ✔ Grafana dashboard JSON
-- ✔ README documentation
-- ✔ Screenshots folder
